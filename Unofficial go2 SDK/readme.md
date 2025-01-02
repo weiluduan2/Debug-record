@@ -48,7 +48,7 @@ Reason 2:
 
 
 
-  
+
 Bug 3: Nav2 can't plan a rotation path to robot.
 
 Solution 3:
