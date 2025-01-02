@@ -66,6 +66,13 @@ Reason 3:
 
   This controller is design for rotation, it will make robot firstly rotate to the path and then let primary controller to plan the next step.
 
+
+
+Bug 4: No localization node working.
+
+Solutions 4:
+  When we alread use slam toolbox building a map and want to load it, there are sereval issues. Firsly, we should close slam toolbox because nav2 already provide "amcl" as localization node. Secondly, we should add three nav2 nodes in launch file, they are "nav2_map_server',"nav2_amcl",'nav2_lifecycle_manager'. And be very careful: rviz2 must start first and then "nav2_map_server" can start, becaus map server will only publish map once, and if rviz2 did't subscribe it in time, map will be lost. 
+I update the launch file in floder. 
   
        
   
