@@ -50,13 +50,20 @@ Reason 2:
 
   
 Bug 3: Nav2 can't plan a rotation path to robot.
+
 Solution 3:
   Add a RotationShimController to nav2_parameters.yaml:
+  
   "FollowPath:
+  
       plugin: "nav2_rotation_shim_controller::RotationShimController"
+      
       primary_controller: "dwb_core::DWBLocalPlanner"
+      
   "
+  
 Reason 3:
+
   This controller is design for rotation, it will make robot firstly rotate to the path and then let primary controller to plan the next step.
 
   
