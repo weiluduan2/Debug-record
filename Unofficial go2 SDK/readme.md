@@ -1,9 +1,15 @@
 2025.1.2
 This is for an unofficial unitree go2 sdk, original project is https://github.com/abizovnuralem/go2_ros2_sdk
+
+
 Bug 1:
   The cost map especially global cost map has huge difference with local costmap and map.
+
+  
 Solution 1:
   Change nav2_parameters.yaml, "global_frame:odom"->"global_frame:map", in "amcl","bt_navigator","global_costmap" section.
+
+  
 Reason 1: 
   Original project setting these frames to odom will cause the fact that all localization node whether in SLAMtoolbox or Nav2 are useless. And this will make all data(Passable area，obstacle....) in " odom" coordinates. And with running time increases， error between odom and map will accummate but no any node can erase this. Because localization node shoud input /scan and output the right /tf between local_frame and global_frame to make sure that costmap can match the global frame:map. But right now, local_frame=global_frame=odom. So the costmap especially global costmap will be very different with realy world.
   
